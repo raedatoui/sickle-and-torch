@@ -13,11 +13,11 @@ export default function Home() {
         <div className="min-h-screen flex flex-col w-full text-gray-200">
             {/* Global Fixed Background */}
             <div className="fixed inset-0 z-[-1] bg-[url('/red_bg.webp')] bg-cover bg-center bg-no-repeat" />
-
+            <div className="fixed inset-0 z-[-1] bg-black/50" />
             {/* =========================================
                HERO SECTION
                ========================================= */}
-            <Section className="min-h-[90vh] flex justify-center pt-32 pb-12">
+            <Section className="min-h-[90vh] flex justify-center">
                 <div className="w-full max-w-7xl px-4 flex flex-col items-center text-center space-y-8">
 
                     {/* Main Headlines */}
@@ -39,26 +39,30 @@ export default function Home() {
                     </div>
 
                     {/* System Callouts - Grid Layout Restored */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl text-xl md:text-2xl font-bold tracking-wide items-center justify-items-center drop-shadow-md text-gray-200 mt-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl text-xl md:text-2xl font-bold tracking-wide items-start justify-items-center drop-shadow-md text-gray-200 mt-8">
                         <div className="flex flex-col items-center gap-3 text-center">
                             <span>PLAY OUT YOUR</span>
-                            <img src="/5e.webp" alt="5E" className="h-12 w-auto" />
+                            <img src="/5e.webp" alt="5E" className="h-20 w-auto" />
                             <span>CHARACTER’S BACKSTORY</span>
                         </div>
 
                         <div className="flex flex-col items-center gap-3 text-center">
                             <span>RUN AN UNFORGETTABLE</span>
-                            <img src="/shadowdark.webp" alt="Shadowdark" className="h-12 w-auto" />
+                            <img src="/shadowdark.webp" alt="Shadowdark" className="h-20 w-auto invert" />
                             <span>GAUNTLET</span>
                         </div>
 
                         <div className="flex flex-col items-center gap-3 text-center">
-                            <span>HAVE EVEN MORE FUN WITH YOUR</span>
-                            <img src="/dcc.webp" alt="DCC" className="h-12 w-auto" />
+                            <span>HAVE EVEN MORE<br />FUN WITH YOUR</span>
+                            <img src="/dcc.webp" alt="DCC" className="h-20 w-auto" />
                             <span>FUNNEL!</span>
                         </div>
                     </div>
+                </div>
+            </Section>
 
+            <Section className="flex justify-center">
+                <div className="w-full max-w-7xl px-4 flex flex-col items-center text-center space-y-8">
                     {/* Intro Description */}
                     <p className="max-w-4xl mt-8 text-center text-lg md:text-xl leading-relaxed font-secondary px-4">
                         <span className="text-[var(--color-gold-primary)] font-bold">Sickle & Torch</span> is a rules expansion for{' '}
@@ -82,7 +86,7 @@ export default function Home() {
             {/* =========================================
                FEATURES SECTION
                ========================================= */}
-            <Section className="bg-black/30 backdrop-blur-sm border-y border-[var(--color-gold-dim)]/20">
+            <Section>
                 <div className="w-full max-w-7xl px-4 flex flex-col items-center">
 
                     {/* Placeholder for IMAGE 1 */}
@@ -115,7 +119,6 @@ export default function Home() {
                     <div className="w-full max-w-6xl mt-12">
                          <InfoCard
                             title="RAISE THE TORCHES!"
-                            className="bg-gradient-to-b from-black/60 to-[var(--color-torch-red)]/10"
                             description="Four new Torch classes - inspiring spirits that arise from unjust deaths, sacrifice and martyrdom, ready to guide your 0-levels towards their chosen heroic path!"
                         />
                     </div>
@@ -136,7 +139,7 @@ export default function Home() {
             {/* =========================================
                PICK YOUR SYSTEM SECTION
                ========================================= */}
-            <Section className=" backdrop-blur-sm">
+            <Section>
                 <div className="w-full max-w-7xl px-4 space-y-12">
                      <div className="text-center mb-12">
                         <h2 className="text-4xl md:text-6xl text-white font-old-newspaper">Pick Your System</h2>
@@ -165,7 +168,7 @@ export default function Home() {
                             imageAlt="Shadowdark Cover"
                              title={
                                 <span className="flex items-center gap-2">
-                                    <img src="/shadowdark.webp" className="h-8 w-auto" alt="Shadowdark" />
+                                    <img src="/shadowdark.webp" className="h-8 w-auto invert" alt="Shadowdark" />
                                     RUN THE GAUNTLET
                                 </span>
                             }
@@ -263,7 +266,7 @@ export default function Home() {
                FOOTER / CTA SECTION
                ========================================= */}
             <Section className="!py-0">
-                 <div className="w-full relative py-24 flex flex-col items-center space-y-16">
+                 <div className="w-full relative flex flex-col items-center space-y-16">
                      {/* Final Announcement */}
                      <div className="w-full flex justify-center px-4">
                         <AnnouncementBanner
