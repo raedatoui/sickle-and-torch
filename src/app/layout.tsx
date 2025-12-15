@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import { Roboto_Condensed } from 'next/font/google';
 import './globals.css';
 
 const planchette = localFont({
@@ -9,10 +8,21 @@ const planchette = localFont({
     display: 'swap',
 });
 
-const robotoCondensed = Roboto_Condensed({
-    subsets: ['latin'],
-    weight: ['300', '400', '700'],
-    variable: '--font-roboto',
+const cambria = localFont({
+    src: './fonts/Cambria.woff2',
+    variable: '--font-cambria',
+    display: 'swap',
+});
+
+const bahnschrift = localFont({
+    src: './fonts/Bahnschrift.woff2',
+    variable: '--font-bahnschrift',
+    display: 'swap',
+});
+
+const oldNewspaper = localFont({
+    src: './fonts/OldNewspaperTypes.woff2',
+    variable: '--font-old-newspaper',
     display: 'swap',
 });
 
@@ -23,8 +33,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={`${planchette.variable} ${robotoCondensed.variable}`}>
-            <body className="min-h-screen bg-[var(--color-void-bg)] text-[var(--color-text-main)]">
+        <html lang="en" className={`${planchette.variable} ${cambria.variable} ${bahnschrift.variable} ${oldNewspaper.variable}`}>
+            <body className="min-h-screen bg-[var(--color-void-bg)] text-[var(--color-text-main)] font-body">
                  {children}
             </body>
         </html>

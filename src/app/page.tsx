@@ -1,189 +1,288 @@
 'use client';
 
-import { ReactNode } from 'react';
-
-// Reusable Section Component
-const Section = ({ 
-    children, 
-    className = "", 
-    id = "" 
-}: { 
-    children: ReactNode; 
-    className?: string;
-    id?: string;
-}) => (
-    <section id={id} className={`w-full py-16 md:py-24 flex flex-col items-center justify-center relative overflow-hidden ${className}`}>
-        <div className="w-full flex flex-col items-center z-10">
-            {children}
-        </div>
-    </section>
-);
+import React from 'react';
+import Section from '@/components/Section';
+import AnnouncementBanner from '@/components/AnnouncementBanner';
+import InfoCard from '@/components/InfoCard';
+import AdventureCard from '@/components/AdventureCard';
+import SubscribeForm from '@/components/SubscribeForm';
+import SocialFollow from '@/components/SocialFollow';
 
 export default function Home() {
     return (
-        <div className="min-h-screen flex flex-col w-full">
-            {/* Red BG - Global fixed background */}
+        <div className="min-h-screen flex flex-col w-full text-gray-200">
+            {/* Global Fixed Background */}
             <div className="fixed inset-0 z-[-1] bg-[url('/red_bg.webp')] bg-cover bg-center bg-no-repeat" />
 
-            {/* Section 1: Logo & Intro */}
-            <Section className="min-h-[60vh]">
-                <div className="w-full max-w-7xl px-4 flex flex-col items-center text-center space-y-4 md:space-y-6">
-                    <h2 className="tracking-[0.2em] text-sm md:text-xl uppercase font-bold font-secondary">Everything for Playing</h2>
-                    <h1 className="text-4xl md:text-7xl font-bold gold-gradient-text leading-tight drop-shadow-lg">ZERO LEVEL HEROES</h1>
-                    <p className="text-lg md:text-2xl font-secondary italic text-gray-200">in one 40-page rules expansion</p>
-                </div>
+            {/* =========================================
+               HERO SECTION
+               ========================================= */}
+            <Section className="min-h-[90vh] flex justify-center pt-32 pb-12">
+                <div className="w-full max-w-7xl px-4 flex flex-col items-center text-center space-y-8">
 
-                <div className="w-full max-w-sm md:max-w-2xl mt-8 md:mt-12 filter drop-shadow-[0_0_15px_rgba(201,162,39,0.2)] px-4">
-                    <img src="/logo_st_black.webp" alt="Sickle & Torch Logo" className="w-full h-auto invert opacity-95 hover:opacity-100 transition-opacity" />
-                </div>
+                    {/* Main Headlines */}
+                    <div className="space-y-4">
+                        <h2 className="tracking-[0.2em] text-sm md:text-xl uppercase font-bold font-secondary text-gray-100">
+                            Everything for Playing
+                        </h2>
+                        <h1 className="text-4xl md:text-7xl font-bold gold-gradient-text leading-tight drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+                            ZERO LEVEL HEROES
+                        </h1>
+                        <p className="text-xl md:text-3xl font-secondary italic text-gray-300">
+                            in one 40-page rules expansion
+                        </p>
+                    </div>
 
-                <p className="max-w-3xl mt-8 md:mt-12 text-center text-lg md:text-xl leading-relaxed font-secondary text-gray-200 px-4">
-                    <span className="text-[var(--color-gold-primary)] font-bold">Sickle & Torch</span> is a rules expansion for{' '}
-                    <span className="text-white font-bold">5e</span>, <span className="text-white font-bold">Shadowdark</span> and{' '}
-                    <span className="text-white font-bold">Dungeon Crawl Classics</span> that focuses on 0-level commoners on their paths towards
-                    becoming heroic level 1 characters.
-                </p>
-            </Section>
+                    {/* Logo */}
+                    <div className="w-full max-w-lg md:max-w-2xl my-8 -mt-4 filter drop-shadow-[0_0_25px_rgba(201,162,39,0.15)]">
+                        <img src="/logo_st_black.webp" alt="Sickle & Torch Logo" className="w-full h-auto invert opacity-95 hover:opacity-100 transition-opacity duration-500" />
+                    </div>
 
-            {/* Section 2: Covers */}
-            <Section>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 w-full max-w-7xl px-4 place-items-center">
-                    {/* 5E */}
-                    <div className="flex flex-col items-center space-y-4 group max-w-sm">
-                        <h3 className="text-xl md:text-2xl font-bold text-center leading-tight min-h-[3rem] flex items-center justify-center">
-                            <span>
-                                PLAY OUT YOUR <img src="/5e.webp" alt="5E" className="inline-block h-8 md:h-12 mx-1 align-middle" /> CHARACTER'S BACKSTORY
-                            </span>
-                        </h3>
-                        <div className="w-full aspect-[3/4] shadow-2xl transform group-hover:scale-105 transition-transform duration-300">
-                            <img src="/00_cover_5E.webp" alt="5E Edition Cover" className="object-cover w-full h-full rounded-sm border border-[var(--color-gold-dim)]/30" />
+                    {/* System Callouts - Grid Layout Restored */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl text-xl md:text-2xl font-bold tracking-wide items-center justify-items-center drop-shadow-md text-gray-200 mt-8">
+                        <div className="flex flex-col items-center gap-3 text-center">
+                            <span>PLAY OUT YOUR</span>
+                            <img src="/5e.webp" alt="5E" className="h-12 w-auto" />
+                            <span>CHARACTER’S BACKSTORY</span>
+                        </div>
+
+                        <div className="flex flex-col items-center gap-3 text-center">
+                            <span>RUN AN UNFORGETTABLE</span>
+                            <img src="/shadowdark.webp" alt="Shadowdark" className="h-12 w-auto" />
+                            <span>GAUNTLET</span>
+                        </div>
+
+                        <div className="flex flex-col items-center gap-3 text-center">
+                            <span>HAVE EVEN MORE FUN WITH YOUR</span>
+                            <img src="/dcc.webp" alt="DCC" className="h-12 w-auto" />
+                            <span>FUNNEL!</span>
                         </div>
                     </div>
 
-                    {/* Shadowdark */}
-                    <div className="flex flex-col items-center space-y-4 group max-w-sm">
-                        <h3 className="text-xl md:text-2xl font-bold text-center leading-tight min-h-[3rem] flex items-center justify-center">
-                           <span>
-                                RUN AN UNFORGETTABLE <img src="/shadowdark.webp" alt="Shadowdark" className="inline-block h-8 md:h-12 mx-1 align-middle" /> GAUNTLET
-                           </span>
-                        </h3>
-                        <div className="w-full aspect-[3/4] shadow-2xl transform group-hover:scale-105 transition-transform duration-300">
-                            <img src="/00_cover_shadowdark.webp" alt="Shadowdark Edition Cover" className="object-cover w-full h-full rounded-sm border border-[var(--color-gold-dim)]/30" />
-                        </div>
-                    </div>
-
-                    {/* DCC */}
-                    <div className="flex flex-col items-center space-y-4 group max-w-sm">
-                        <h3 className="text-xl md:text-2xl font-bold text-center leading-tight min-h-[3rem] flex items-center justify-center">
-                            <span>
-                                HAVE EVEN MORE FUN WITH YOUR <img src="/dcc.webp" alt="DCC" className="inline-block h-8 md:h-12 mx-1 align-middle" /> FUNNEL!
-                            </span>
-                        </h3>
-                        <div className="w-full aspect-[3/4] shadow-2xl transform group-hover:scale-105 transition-transform duration-300">
-                            <img src="/00_cover_DCC.webp" alt="DCC Edition Cover" className="object-cover w-full h-full rounded-sm border border-[var(--color-gold-dim)]/30" />
-                        </div>
-                    </div>
-                </div>
-            </Section>
-
-            {/* Section 3: Adventures + Background Bailiff */}
-            <Section className="min-h-[80vh] justify-center">
-                {/* Background Bailiff - Absolute within this section */}
-                <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden opacity-40 pointer-events-none">
-                    <img src="/bailiff.webp" alt="" className="h-full w-auto object-cover md:object-contain scale-125 md:scale-100" />
-                </div>
-
-                <div className="relative z-10 w-full flex flex-col items-center px-4">
-                    <div className="max-w-5xl text-center space-y-6 md:space-y-10">
-                        <div>
-                            <h2 className="text-4xl md:text-7xl font-bold uppercase text-white leading-none mb-2">Four Adventures</h2>
-                            <h2 className="text-4xl md:text-7xl font-bold uppercase gold-gradient-text leading-none">Endless Scenarios</h2>
-                        </div>
-
-                        <div className="space-y-4 text-base md:text-2xl font-secondary">
-                            <p>
-                                <span className="text-[var(--color-gold-primary)] font-bold text-2xl md:text-4xl">40+</span>{' '}
-                                <span className="text-white">encounters</span>
-                                <span className="text-gray-400">, from </span>
-                                <span className="text-green-400 italic">colorful</span>
-                                <span className="text-gray-400"> to </span>
-                                <span className="text-red-500 italic">terrifying</span>
-                            </p>
-                            <div className="h-px w-1/3 mx-auto bg-gradient-to-r from-transparent via-[var(--color-gold-dim)] to-transparent my-4" />
-                            <p className="text-gray-200">
-                                A simple & elegant mechanic to <span className="text-white font-bold">randomize</span> and{' '}
-                                <span className="text-white font-bold">scale</span> their strength
-                            </p>
-                            <p className="text-lg md:text-3xl font-bold text-white mt-4">No preset paths. No fixed encounters.</p>
-                            <p className="text-gray-300">
-                                Playable with <span className="text-[var(--color-gold-primary)]">0-level</span> or{' '}
-                                <span className="text-[var(--color-gold-primary)]">low-level (1-3)</span> characters
-                            </p>
-                            <div className="h-px w-1/3 mx-auto bg-gradient-to-r from-transparent via-[var(--color-gold-dim)] to-transparent my-4" />
-                            <p className="text-xl md:text-3xl">
-                                <span className="text-gray-400">Potential replay value:</span>{' '}
-                                <span className="gold-gradient-text font-bold tracking-wider">INCALCULABLE</span>
-                            </p>
-                        </div>
-
-                        {/* Kickstarter Banner moved inside the card for cohesion */}
-                        <div className="pt-8 mt-4">
-                            <div className="inline-flex flex-col items-center space-y-2 p-6">
-                                <p className="text-xs md:text-sm uppercase tracking-widest text-[var(--color-gold-dim)]">Coming to Kickstarter</p>
-                                <div className="bg-white text-black px-4 py-1 font-bold rounded text-sm tracking-tighter shadow-[0_0_15px_rgba(255,255,255,0.4)]">KICKSTARTER</div>
-                                <h2 className="text-2xl md:text-4xl font-bold text-white">February 2026</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Section>
-
-            {/* Section 5: Join The Mob */}
-            <Section className="!py-0 !md:py-0">
-                <div className="flex flex-col items-center justify-center w-full max-w-2xl text-center space-y-8 mb-16 px-4 pt-16 md:pt-24">
-                    <h2 className="text-5xl md:text-8xl font-bold gold-gradient-text uppercase tracking-wide">Join The Mob</h2>
-                    <p className="text-lg text-gray-300 font-secondary max-w-lg">
-                        Sign up for updates and be the first to know when the campaign launches.
+                    {/* Intro Description */}
+                    <p className="max-w-4xl mt-8 text-center text-lg md:text-xl leading-relaxed font-secondary px-4">
+                        <span className="text-[var(--color-gold-primary)] font-bold">Sickle & Torch</span> is a rules expansion for{' '}
+                        <span className="text-white font-bold">5e</span>, <span className="text-white font-bold">Shadowdark</span> and{' '}
+                        <span className="text-white font-bold">Dungeon Crawl Classics</span> that focuses on 0-level commoners on their paths towards
+                        becoming heroic level 1 characters.
                     </p>
 
-                    <form className="flex flex-col md:flex-row gap-3 w-full">
-                        <input
-                            type="email"
-                            placeholder="Enter your email"
-                            className="flex-1 bg-black/80 border border-[var(--color-gold-dim)] px-6 py-4 text-white focus:border-[var(--color-gold-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--color-gold-primary)] font-secondary rounded-sm transition-all"
-                        />
-                        <button className="btn-fantasy px-10 py-4 font-bold whitespace-nowrap text-lg rounded-sm cursor-pointer">
-                            Subscribe
-                        </button>
-                    </form>
+                    {/* Kickstarter Announcement */}
+                    <AnnouncementBanner
+                        title="Coming to Kickstarter"
+                        date="February 2026"
+                        className="mt-12"
+                    />
 
-                    <div className="flex flex-col items-center space-y-4 pt-8">
-                        <p className="text-sm uppercase tracking-widest text-[var(--color-text-muted)]">Follow us</p>
-                        <div className="flex space-x-6 text-[var(--color-gold-primary)]">
-                            <a
-                                href="#"
-                                className="hover:text-white transition-colors font-bold border border-[var(--color-gold-dim)] hover:border-white px-4 py-2 text-sm rounded uppercase tracking-wider"
-                            >
-                                Kickstarter
-                            </a>
-                            <a
-                                href="#"
-                                className="hover:text-white transition-colors font-bold border border-[var(--color-gold-dim)] hover:border-white px-4 py-2 text-sm rounded uppercase tracking-wider"
-                            >
-                                Facebook
-                            </a>
-                            <a
-                                href="#"
-                                className="hover:text-white transition-colors font-bold border border-[var(--color-gold-dim)] hover:border-white px-4 py-2 text-sm rounded uppercase tracking-wider"
-                            >
-                                Twitter
-                            </a>
+                    {/* Social Follow */}
+                    <SocialFollow className="mt-4" />
+                </div>
+            </Section>
+
+            {/* =========================================
+               FEATURES SECTION
+               ========================================= */}
+            <Section className="bg-black/30 backdrop-blur-sm border-y border-[var(--color-gold-dim)]/20">
+                <div className="w-full max-w-7xl px-4 flex flex-col items-center">
+
+                    {/* Placeholder for IMAGE 1 */}
+                    <div className="w-full max-w-5xl h-64 md:h-96 bg-black/50 border border-[var(--color-gold-dim)] mb-12 flex items-center justify-center relative overflow-hidden group">
+                         {/* Using crowd.webp as placeholder for 'Image 1' (General Atmosphere) */}
+                        <img src="/crowd.webp" alt="General Atmosphere" className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <h2 className="text-2xl md:text-4xl font-bold uppercase text-white text-center px-4 drop-shadow-lg">
+                                INCLUDING: Four unique original adventures ready for 0 level or low-level play!
+                            </h2>
                         </div>
                     </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
+                        <InfoCard
+                            title="PLUG AND PLAY"
+                            description="Every mechanic is presented in its own short and sweet chapter, so that any new or alternative rules you like can be simply implemented whether you are already familiar with 0 level play, or easily tried out if you are going zero for the first time."
+                        />
+                         <InfoCard
+                            title="THEY HAVE POTENTIAL…"
+                            description={
+                                <span>
+                                    Roll up your 0-level characters the old school way, randomly determine their background and occupation and off you go! But know one thing - you <span className="text-white font-bold italic">WILL</span> get a chance to increase their ability scores using the new Potential mechanic.
+                                </span>
+                            }
+                        />
+                    </div>
+
+                    {/* Full Width Feature with Image 2 Placeholder */}
+                    <div className="w-full max-w-6xl mt-12">
+                         <InfoCard
+                            title="RAISE THE TORCHES!"
+                            className="bg-gradient-to-b from-black/60 to-[var(--color-torch-red)]/10"
+                            description="Four new Torch classes - inspiring spirits that arise from unjust deaths, sacrifice and martyrdom, ready to guide your 0-levels towards their chosen heroic path!"
+                        />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mt-12">
+                        <InfoCard
+                            title="A ONE OF A KIND 0-LEVEL CAMPAIGN"
+                            description="Play as a mob of commoners caught in a rebellion against corrupt overlords and evil monsters who have taken over their land! Four adventures which together tell the tale of the Fall of the Dusk Empire, with a unique system for determining random encounters and varying their strength. The adventures can be played in any order - or any one can be used as a starting point for a campaign of your own making!"
+                        />
+                         <InfoCard
+                            title="GO ABOVE ZERO"
+                            description="Sickle & Torch mechanics work for 0-level and low-level play in any of the three available systems. Every adventure can also be played by characters of level 1-3 (or even 4 in the 5e version) without any adjustments, using the new Difficulty Die mechanic."
+                        />
+                    </div>
+                </div>
+            </Section>
+
+            {/* =========================================
+               PICK YOUR SYSTEM SECTION
+               ========================================= */}
+            <Section className=" backdrop-blur-sm">
+                <div className="w-full max-w-7xl px-4 space-y-12">
+                     <div className="text-center mb-12">
+                        <h2 className="text-4xl md:text-6xl text-white font-old-newspaper">Pick Your System</h2>
+                        <p className="text-xl text-[var(--color-gold-dim)] mt-4 font-secondary uppercase tracking-widest">
+                            5e &bull; Dungeon Crawl Classics &bull; Shadowdark
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {/* 5E */}
+                        <InfoCard
+                            imageSrc="/00_cover_5E.webp"
+                            imageAlt="5E Cover"
+                            title={
+                                <span className="flex items-center gap-2">
+                                    <img src="/5e.webp" className="h-8 w-auto" alt="5e" />
+                                    HEROIC ORIGINS
+                                </span>
+                            }
+                            description="Play out your 5e character’s heroic origin - your next backstory may be wilder than you could have ever imagined with these new background rules, ability score improvement options and variant mechanics for encounters that scale as your characters advance from commoners to low-level heroes!"
+                        />
+
+                        {/* Shadowdark */}
+                         <InfoCard
+                            imageSrc="/00_cover_shadowdark.webp"
+                            imageAlt="Shadowdark Cover"
+                             title={
+                                <span className="flex items-center gap-2">
+                                    <img src="/shadowdark.webp" className="h-8 w-auto" alt="Shadowdark" />
+                                    RUN THE GAUNTLET
+                                </span>
+                            }
+                            description="Run through your next Shadowdark gauntlet (or four) using expanded rules for 0-level character play and advancement, and do it alongside an in-game guide who will help you towards the class your character aspires to become - the new Torch mechanic!"
+                        />
+
+                        {/* DCC */}
+                         <InfoCard
+                            imageSrc="/00_cover_DCC.webp"
+                            imageAlt="DCC Cover"
+                             title={
+                                <span className="flex items-center gap-2">
+                                    <img src="/dcc.webp" className="h-8 w-auto" alt="DCC" />
+                                    ALL IN GOOD FUNNEL
+                                </span>
+                            }
+                            description="Explore new options for 0-level trade goods, birth augurs, rules for 0-level character improvement, Torch guiding spirits and more - and have funnel levels of fun even with character levels 1 to 3 with the new Difficulty Die mechanic for stochastically scaling encounters!"
+                        />
+                    </div>
+                </div>
+            </Section>
+
+            {/* =========================================
+               ADVENTURES SECTION
+               ========================================= */}
+            <Section id="adventures">
+                <div className="w-full max-w-7xl px-4 flex flex-col items-center">
+                    <div className="text-center space-y-4 mb-16">
+                         <h2 className="text-4xl md:text-7xl gold-gradient-text leading-none drop-shadow-lg font-old-newspaper">
+                            Four Adventures,<br/>Endless Scenarios
+                        </h2>
+                        <h3 className="text-xl md:text-3xl text-gray-200 font-secondary max-w-3xl mx-auto">
+                            Four strongholds of tyranny, ready to be stormed by righteous mobs.
+                        </h3>
+
+                        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-10 font-bold uppercase tracking-wider text-sm md:text-base">
+                            <span className="px-6 py-2 bg-black/60 border border-[var(--color-gold-dim)]/50 text-[var(--color-gold-primary)] rounded shadow-sm">40+ Encounters</span>
+                            <span className="px-6 py-2 bg-black/60 border border-[var(--color-gold-dim)]/50 text-[var(--color-gold-primary)] rounded shadow-sm">No Preset Paths</span>
+                            <span className="px-6 py-2 bg-black/60 border border-[var(--color-gold-dim)]/50 text-[var(--color-gold-primary)] rounded shadow-sm">Levels 0-3</span>
+                            <span className="px-6 py-2 bg-black/60 border border-[var(--color-gold-dim)]/50 text-[var(--color-gold-primary)] rounded shadow-sm">Replay Value: Incalculable</span>
+                        </div>
+                    </div>
+
+                    {/* Adventure 1: Thrall Hold */}
+                    <AdventureCard
+                        title="Thrall Hold of the Blood Bailiff"
+                        imageSrc="/bailiff.webp"
+                        description={
+                            <>
+                                <p>The slaves of the Thrall Hold have revolted! The angry mob is storming the gates while the dreadful Blood Bailiff is gearing up to defend his palace and all the blasphemous secrets and dark magics it hides.</p>
+                                <p>Your characters are a part of the mob - brave rebels seeking freedom from the slavers commanded by the Blood Bailiff, ready to clear out the fortress of his evil minions, loot the riches he stole from the people, and bring him to justice!</p>
+                            </>
+                        }
+                    />
+
+                    {/* Adventure 2: Perilous Chapel */}
+                    <AdventureCard
+                        title="Perilous Chapel of the Omni Patriarch"
+                        reversed={true}
+                        description={
+                            <>
+                                <p>The glorious New Law Temple is burning - its golden roof aflame with reflections of a thousand torches gathered on the square before its magnificent grand doors. The mass of people has gathered not for a prayer or a vigil, but for justice and revenge.</p>
+                                <p>For too long have the inquisitors of the Inner Church burned, quartered or shackled anyone who dares speak their mind. For too long have the priests been wallowing in corrupt luxury, while people toil in misery, and innocents are accused of sin, to be slaughtered and enslaved!</p>
+                            </>
+                        }
+                    />
+
+                     {/* Adventure 3: Panopticon */}
+                     <AdventureCard
+                        title="Forbidden Citadel of the Panopticon Overmind"
+                        description={
+                            <>
+                                <p>The Panopticon looms over the Dusk Empire, the seat of its intelligence service and the nexus of its supernatural surveillance apparatus. It is whispered that inside the fortress resides a huge magical brain, an overmind that controls all the scrying eyes and directs all the vile spies that observe and oversee every corner of the realm.</p>
+                                <p>And what they see is that every corner of the realm is aflame with rebellion. Scrying eyes shot out of the sky, blackguards driven from the villages, and thousands of ordinary people converging on the Panopticon, ready to breach its seemingly impregnable walls and break open its dark secrets!</p>
+                            </>
+                        }
+                    />
+
+                     {/* Adventure 4: Alcazar */}
+                     <AdventureCard
+                        title="Roving Alcazar of the Golden Principal"
+                        reversed={true}
+                        description={
+                            <>
+                                <p>The Roving Alcazar has come to your homeland. An itinerant castle of basalt and gold built on a huge granite rock, it casts a long shadow of obscene splendor wherever it goes. Villages are emptied by its golden guard; livestock and birds are hunted to extinction by the winged beasts that protect it; and its depraved nobles led by the Golden Principal are said to bathe in blood of the innocent.</p>
+                                <p>But now the day of reckoning has finally come. The three-storey tall stone wheels turned by elementals have ground to a halt, the flying beasts have been recalled back to its towers and the fabled rainbow bridge has appeared at the foot of the moving rock so that anyone can ascend towards the castle and through its golden gates. The servants of the Alcazar have revolted as the Dusk Empire erupts in rebellion!</p>
+                            </>
+                        }
+                    />
+
+                </div>
+            </Section>
+
+            {/* =========================================
+               FOOTER / CTA SECTION
+               ========================================= */}
+            <Section className="!py-0">
+                 <div className="w-full relative py-24 flex flex-col items-center space-y-16">
+                     {/* Final Announcement */}
+                     <div className="w-full flex justify-center px-4">
+                        <AnnouncementBanner
+                            title="Available"
+                            date="April 2026"
+                            className="max-w-xl"
+                        />
+                    </div>
+
+                    {/* Follow Us */}
+                    <SocialFollow />
+
+                    {/* Join The Mob */}
+                    <SubscribeForm />
                 </div>
 
-                <div className="w-full relative mt-auto">
-                    <img src="/crowd.webp" alt="The Mob" className="block w-full h-auto max-h-[50vh] object-cover object-top" />
+                {/* Mob Image at the very bottom */}
+                <div className="w-full mt-auto">
+                    <img src="/crowd.webp" alt="The Mob" className="block w-full h-auto max-h-[40vh] object-cover object-top opacity-80" />
                 </div>
             </Section>
         </div>
