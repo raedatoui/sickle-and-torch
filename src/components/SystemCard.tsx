@@ -11,12 +11,22 @@ interface SystemCardProps {
 
 const SystemCard: React.FC<SystemCardProps> = ({ title, description, coverImage, systemIcon, systemName, invertIcon = false }) => {
     return (
-        <div className="flex flex-col items-center text-center space-y-4 p-6 bg-black/20 border border-[var(--color-gold-dim)]/30 hover:border-[var(--color-gold-dim)] transition-all duration-300 hover:bg-black/60 group h-full">
-            <div className="w-full mb-4 overflow-hidden rounded-sm border border-[var(--color-gold-dim)]/20 group-hover:border-[var(--color-gold-dim)]/50 transition-colors">
+        <div
+            className="relative flex flex-col items-center text-center space-y-4 p-6 
+            bg-[var(--color-void-panel)]/60 backdrop-blur-sm
+            border border-[var(--color-gold-dim)]/30 
+            transition-all duration-500 ease-out 
+            group h-full
+            hover:-translate-y-1
+            hover:border-[var(--color-gold-primary)] 
+            hover:bg-[var(--color-void-panel)]
+            hover:shadow-[0_0_40px_-10px_var(--color-torch-glow)]"
+        >
+            <div className="w-full mb-4 overflow-hidden rounded-sm border border-[var(--color-gold-dim)]/20 group-hover:border-[var(--color-gold-primary)] group-hover:shadow-[0_0_15px_var(--color-gold-glow)] transition-all duration-500">
                 <img
                     src={coverImage}
                     alt={`${systemName} Cover`}
-                    className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
             </div>
 
@@ -27,7 +37,9 @@ const SystemCard: React.FC<SystemCardProps> = ({ title, description, coverImage,
                 </h3>
             </div>
 
-            <div className="text-gray-300 font-secondary leading-relaxed text-lg">{description}</div>
+            <div className="text-gray-300 font-secondary leading-relaxed text-lg group-hover:text-[var(--color-text-main)] transition-colors duration-300">
+                {description}
+            </div>
         </div>
     );
 };
