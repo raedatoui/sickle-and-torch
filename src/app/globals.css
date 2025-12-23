@@ -17,8 +17,8 @@
 
     --font-planchette: var(--font-planchette), serif;
     --font-cambria: var(--font-cambria), serif;
-    --font-bahnschrift: var(--font-bahnschrift), sans-serif;
     --font-old-newspaper: var(--font-old-newspaper), serif;
+    --font-body: var(--font-cambria), serif;
 }
 
 html {
@@ -38,14 +38,18 @@ h1 {
     font-family: var(--font-old-newspaper);
 }
 
-h2, h3, h4, h5, h6 {
-    font-family: var(--font-bahnschrift);
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-cambria);
 }
 
 /* Fantasy Utilities */
 
 .font-secondary {
-    font-family: var(--font-bahnschrift);
+    font-family: var(--font-cambria);
 }
 
 .font-old-newspaper {
@@ -70,7 +74,7 @@ h2, h3, h4, h5, h6 {
     background: linear-gradient(to bottom, #fbf5b7 0%, #bf953f 50%, #b38728 51%, #fbf5b7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 5px rgba(0,0,0,0.8));
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
 }
 
 /* Card Hover Effects */
@@ -82,9 +86,12 @@ h2, h3, h4, h5, h6 {
 }
 
 .fantasy-card::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border: 1px solid transparent;
     transition: border-color 0.4s ease;
     z-index: 10;
@@ -108,7 +115,7 @@ h2, h3, h4, h5, h6 {
     color: var(--color-gold-primary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-family: var(--font-bahnschrift);
+    font-family: var(--font-cambria);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -121,7 +128,7 @@ h2, h3, h4, h5, h6 {
 }
 
 .btn-fantasy::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -50%;
     left: -50%;
@@ -146,7 +153,6 @@ h2, h3, h4, h5, h6 {
     margin: 2rem 0;
 }
 
-
 a {
     color: inherit;
     text-decoration: none;
@@ -166,11 +172,38 @@ a {
 }
 
 .gradient-overlay {
-    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(216,27,27,0.2) 50%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(216, 27, 27, 0.2) 50%, rgba(0, 0, 0, 1) 100%);
 }
 
 .torn-edge {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 98% 98%, 95% 96%, 92% 99%, 88% 96%, 85% 99%, 80% 95%, 75% 98%, 70% 95%, 65% 98%, 60% 95%, 55% 98%, 50% 95%, 45% 98%, 40% 95%, 35% 98%, 30% 95%, 25% 98%, 20% 95%, 15% 98%, 10% 95%, 5% 98%, 2% 96%, 0% 100%);
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 95%,
+        98% 98%,
+        95% 96%,
+        92% 99%,
+        88% 96%,
+        85% 99%,
+        80% 95%,
+        75% 98%,
+        70% 95%,
+        65% 98%,
+        60% 95%,
+        55% 98%,
+        50% 95%,
+        45% 98%,
+        40% 95%,
+        35% 98%,
+        30% 95%,
+        25% 98%,
+        20% 95%,
+        15% 98%,
+        10% 95%,
+        5% 98%,
+        2% 96%,
+        0% 100%
+    );
 }
 
 .glow-text {
@@ -211,12 +244,15 @@ a {
 
 /* Enhanced text shadow for readability over images */
 .text-over-image {
-    text-shadow: 0 2px 4px rgba(0,0,0,1), 0 4px 8px rgba(0,0,0,0.8);
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 1),
+        0 4px 8px rgba(0, 0, 0, 0.8);
 }
 
 /* Subtle pulse animation for gold elements */
 @keyframes pulse-subtle {
-    0%, 100% {
+    0%,
+    100% {
         filter: drop-shadow(0 0 10px var(--color-gold-glow));
     }
     50% {
@@ -226,4 +262,14 @@ a {
 
 .animate-pulse-subtle {
     animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Fix for browser autofill background color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #000000 inset !important;
+    -webkit-text-fill-color: #f2f0e4 !important;
+    transition: background-color 5000s ease-in-out 0s;
 }

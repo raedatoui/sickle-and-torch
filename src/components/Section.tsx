@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import type React from 'react';
+import type { ReactNode } from 'react';
 
 interface SectionProps {
     children: ReactNode;
@@ -6,15 +7,9 @@ interface SectionProps {
     id?: string;
 }
 
-const Section: React.FC<SectionProps> = ({ 
-    children, 
-    className = "", 
-    id = "" 
-}) => (
+const Section: React.FC<SectionProps> = ({ children, className = '', id = '' }) => (
     <section id={id} className={`w-full py-16 md:py-24 flex flex-col items-center justify-center relative overflow-hidden ${className}`}>
-        <div className="w-full flex flex-col items-center z-10">
-            {children}
-        </div>
+        <div className="w-full flex flex-col items-center z-10">{children}</div>
     </section>
 );
 
