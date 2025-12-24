@@ -59,7 +59,7 @@ Always run `npm run check` before committing to auto-fix formatting and linting 
 ### Tech Stack
 - **Framework**: Next.js 16 (App Router, Static Export)
 - **Styling**: Tailwind CSS v4 with custom theme
-- **Fonts**: Custom "Planchette" font (local) + Roboto Condensed (Google Fonts)
+- **Fonts**: Cambria + OldNewspaperTypes (local fonts)
 - **Type Safety**: TypeScript with strict mode
 - **Validation**: Zod (available but not yet used)
 - **Audio**: Tone.js (available but not yet used)
@@ -85,34 +85,47 @@ This means:
 The project uses Tailwind v4's `@theme` directive in `globals.css` with a custom design system:
 
 **Color Palette:**
-- `--color-void-bg`: #050505 (main background)
+- `--color-void-bg`: rgba(139, 0, 0) (main background - dark red)
 - `--color-void-panel`: #0f0f0f (panel background)
 - `--color-gold-primary`: #c9a227 (primary accent)
 - `--color-gold-dim`: #8a6e1c (secondary accent)
 - `--color-torch-red`: #8b0000 (red accent)
-- Text colors: `--color-text-main` (#e0e0e0) and `--color-text-muted` (#a0a0a0)
+- Text colors: `--color-text-main` (#f2f0e4) and `--color-text-muted` (#a0a0a0)
 
 **Custom CSS Classes:**
 - `.gold-gradient-text`: Gold metallic gradient text effect
 - `.btn-fantasy`: Styled button with gold borders and hover effects
 - `.separator-gold`: Horizontal gold gradient separator
 - `.fantasy-card`: Card component with hover lift and glow effects
-- `.font-secondary`: Switches to Roboto Condensed font
+- `.glass-card`: Semi-transparent card with blur backdrop
+- `.font-secondary`: Switches to Cambria font
+- `.font-old-newspaper`: Switches to OldNewspaperTypes font
 
 **Typography:**
-- Primary font: Planchette (custom serif, loaded locally from `src/app/fonts/`)
-- Secondary font: Roboto Condensed (via `next/font/google`)
-- Access via CSS variables: `var(--font-planchette)` and `var(--font-roboto)`
+- Primary font: Cambria (serif, loaded locally from `src/app/fonts/`)
+- Display font: OldNewspaperTypes (used for h1 headings)
+- Access via CSS variables: `var(--font-cambria)` and `var(--font-old-newspaper)`
 
 ### File Structure
 
 ```
-src/app/
-├── layout.tsx          # Root layout with font configuration and metadata
-├── page.tsx            # Landing page component
-├── globals.css         # Tailwind imports and custom theme
-└── fonts/
-    └── planchette.woff2
+src/
+├── app/
+│   ├── layout.tsx          # Root layout with font configuration and metadata
+│   ├── page.tsx            # Landing page (single page site)
+│   ├── globals.css         # Tailwind imports and custom theme
+│   └── fonts/              # Local font files (.woff2)
+└── components/
+    ├── Section.tsx         # Page section wrapper
+    ├── Headline.tsx        # Main headline styling
+    ├── SectionHeader.tsx   # Section title component
+    ├── Divider.tsx         # Section divider with art
+    ├── InfoCard.tsx        # Feature info cards
+    ├── SystemCard.tsx      # RPG system cards (5e, Shadowdark, DCC)
+    ├── AdventureCard.tsx   # Adventure preview cards
+    ├── KickstarterModule.tsx # CTA with subscribe form
+    ├── SubscribeForm.tsx   # Email subscription form
+    └── SocialFollow.tsx    # Social media links
 ```
 
 ### Path Aliases
@@ -131,11 +144,10 @@ import { Component } from '@/components/Component';
 
 ### Working with Fonts
 - Custom fonts: Add to `src/app/fonts/` and import in `layout.tsx` using `next/font/local`
-- Google Fonts: Import in `layout.tsx` using `next/font/google`
 - Apply fonts via CSS variables in `globals.css` theme
 
 ### Adding Dependencies
-This project uses npm, but `bun.lock` exists (likely from previous setup). Stick with npm for consistency:
+This project uses npm:
 ```bash
 npm install <package>
 ```

@@ -13,8 +13,8 @@ export default function Home() {
     return (
         <div className="min-h-screen flex flex-col w-full text-gray-200">
             {/* Global Fixed Background */}
-            <div className="fixed inset-0 z-[-1] bg-[url('/red_bg.webp')] bg-cover bg-center bg-no-repeat"/>
-            <div className="fixed inset-0 z-[-1] bg-black/50"/>
+            <div className="fixed inset-0 z-[-1] bg-[url('/bg.webp')] bg-cover bg-center bg-no-repeat"/>
+            <div className="fixed inset-0 z-[-1] bg-black/45"/>
             {/* =========================================
                HERO SECTION
                ========================================= */}
@@ -33,7 +33,7 @@ export default function Home() {
                     <div
                         className="w-full max-w-lg md:max-w-2xl my-8 -mt-4 filter drop-shadow-[0_0_25px_rgba(201,162,39,0.15)]">
                         <img
-                            src="/logo_st_black.webp"
+                            src="/sicke-n-torch.webp"
                             alt="Sickle & Torch Logo"
                             className="w-full h-auto invert opacity-95 hover:opacity-100 transition-opacity duration-500"
                         />
@@ -44,13 +44,13 @@ export default function Home() {
                         className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl text-xl md:text-2xl font-bold tracking-wide items-start justify-items-center drop-shadow-md text-gray-200 mt-8">
                         <div className="flex flex-col items-center gap-3 text-center">
                             <span>PLAY OUT YOUR</span>
-                            <img src="/5e.webp" alt="5E" className="h-20 w-auto"/>
+                            <img src="/system-5e.webp" alt="5E" className="h-20 w-auto"/>
                             <span>CHARACTER’S BACKSTORY</span>
                         </div>
 
                         <div className="flex flex-col items-center gap-3 text-center">
                             <span>RUN AN UNFORGETTABLE</span>
-                            <img src="/shadowdark.webp" alt="Shadowdark" className="h-20 w-auto invert"/>
+                            <img src="/system-shadowdark.webp" alt="Shadowdark" className="h-20 w-auto invert"/>
                             <span>GAUNTLET</span>
                         </div>
 
@@ -60,7 +60,7 @@ export default function Home() {
                                 <br/>
                                 FUN WITH YOUR
                             </span>
-                            <img src="/dcc.webp" alt="DCC" className="h-20 w-auto"/>
+                            <img src="/system-dcc.webp" alt="DCC" className="h-20 w-auto"/>
                             <span>FUNNEL!</span>
                         </div>
                     </div>
@@ -152,7 +152,7 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* 5E */}
                         <SystemCard
-                            coverImage="/00_cover_5E.webp"
+                            coverImage="/sickle-5e.webp"
                             systemName="5e"
                             systemIcon="/5e.webp"
                             title="HEROIC ORIGINS"
@@ -161,7 +161,7 @@ export default function Home() {
 
                         {/* Shadowdark */}
                         <SystemCard
-                            coverImage="/00_cover_shadowdark.webp"
+                            coverImage="/sickle-shadowdark.webp"
                             systemName="Shadowdark"
                             systemIcon="/shadowdark.webp"
                             invertIcon={true}
@@ -171,7 +171,7 @@ export default function Home() {
 
                         {/* DCC */}
                         <SystemCard
-                            coverImage="/00_cover_DCC.webp"
+                            coverImage="/sickle-dcc.webp"
                             systemName="DCC"
                             systemIcon="/dcc.webp"
                             title="ALL IN GOOD FUNNEL"
@@ -204,19 +204,19 @@ export default function Home() {
                         <div
                             className="flex flex-wrap justify-center gap-3 md:gap-4 mt-10 font-bold uppercase tracking-wider text-xl md:text-2xl">
                             <span
-                                className="px-4 py-2 bg-black/60 border border-[var(--color-gold-dim)]/50 text-[var(--color-gold-primary)] rounded shadow-sm whitespace-nowrap">
+                                className="px-4 py-2 bg-black/60 border border-gold-dim/50 text-gold-primary rounded shadow-sm whitespace-nowrap">
                                 40+ Encounters
                             </span>
                             <span
-                                className="px-4 py-2 bg-black/60 border border-[var(--color-gold-dim)]/50 text-[var(--color-gold-primary)] rounded shadow-sm whitespace-nowrap">
+                                className="px-4 py-2 bg-black/60 border border-gold-dim/50 text-gold-primary rounded shadow-sm whitespace-nowrap">
                                 No Preset Paths
                             </span>
                             <span
-                                className="px-4 py-2 bg-black/60 border border-[var(--color-gold-dim)]/50 text-[var(--color-gold-primary)] rounded shadow-sm whitespace-nowrap">
+                                className="px-4 py-2 bg-black/60 border border-gold-dim/50 text-gold-primary rounded shadow-sm whitespace-nowrap">
                                 Levels 0-3
                             </span>
                             <span
-                                className="px-4 py-2 bg-black/60 border border-[var(--color-gold-dim)]/50 text-[var(--color-gold-primary)] rounded shadow-sm whitespace-nowrap">
+                                className="px-4 py-2 bg-black/60 border border-gold-dim/50 text-gold-primary rounded shadow-sm whitespace-nowrap">
                                 Replay Value: Incalculable
                             </span>
                         </div>
@@ -225,7 +225,7 @@ export default function Home() {
                     {/* Adventure 1: Thrall Hold */}
                     <AdventureCard
                         title="Thrall Hold of the<br /> Blood Bailiff"
-                        imageSrc="/blood-bailiff-cover.jpg"
+                        imageSrc="/blood-bailiff.webp"
                         description={
                             <>
                                 <p>

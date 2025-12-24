@@ -58,10 +58,10 @@ const Divider: React.FC<DividerProps> = ({ className = '', index = 1, speed = 0.
 
     return (
         <div ref={containerRef} className={`w-full flex justify-center items-center py-4 ${className}`}>
-            <img 
+            <img
                 ref={imgRef}
-                src={`/dividers/art_${formattedIndex}.png`}
-                alt="Section Divider" 
+                src={`/dividers/art-${formattedIndex}.webp`}
+                alt="Section Divider"
                 className="w-full max-w-[500px] md:max-w-[900px] max-h-[350px] md:max-h-[550px] h-auto object-contain opacity-90 select-none will-change-transform"
             />
         </div>

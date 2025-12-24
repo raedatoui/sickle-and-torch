@@ -9,7 +9,12 @@
 - **Styling**: Tailwind CSS v4 (using `@theme` in `globals.css`).
 - **Linting/Formatting**: Biome (replaces ESLint/Prettier).
 - **Language**: TypeScript.
-- **Font**: Custom "Planchette" (local) and "Roboto Condensed" (Google).
+- **Fonts**:
+  - Primary (Body): Cambria (local).
+  - Display (Headings): OldNewspaperTypes (local).
+- **Libraries**:
+  - `Tone.js`: Available for audio (not yet used).
+  - `Zod`: Available for validation (not yet used).
 
 ## Critical Development Guidelines
 
@@ -23,12 +28,12 @@
 ### 2. Styling (Tailwind v4)
 - Custom theme variables are defined in `src/app/globals.css`.
 - **Colors**:
-  - `var(--color-void-bg)` / `var(--color-void-panel)` (Dark backgrounds)
-  - `var(--color-gold-primary)` / `var(--color-gold-dim)` (Gold accents)
-  - `var(--color-torch-red)`
+  - `var(--color-void-bg)` / `var(--color-void-panel)`
+  - `var(--color-gold-primary)` / `var(--color-gold-dim)`
+  - `var(--color-text-main)` / `var(--color-text-muted)`
 - **Fonts**:
-  - `font-secondary` class applies Roboto Condensed.
-  - Default font is Planchette (serif).
+  - `font-old-newspaper` class applies OldNewspaperTypes.
+  - Default font is Cambria.
 
 ### 3. Code Quality (Biome)
 - Use **Biome** for all linting and formatting.
@@ -49,14 +54,28 @@
 ### Directory Structure
 ```
 src/
-└── app/
-    ├── fonts/          # Local font files (Planchette)
-    ├── globals.css     # Global styles & Tailwind theme
-    ├── layout.tsx      # Root layout (Metadata, Fonts)
-    └── page.tsx        # Main Landing Page (Single scrollable view)
+├── app/
+│   ├── fonts/          # Local font files (Cambria, OldNewspaperTypes)
+│   ├── globals.css     # Global styles & Tailwind theme
+│   ├── layout.tsx      # Root layout (Metadata, Fonts)
+│   └── page.tsx        # Main Landing Page (Single scrollable view)
+├── components/         # Reusable UI components
+│   ├── AdventureCard.tsx
+│   ├── AnnouncementBanner.tsx
+│   ├── Divider.tsx
+│   ├── Headline.tsx
+│   ├── InfoCard.tsx
+│   ├── KickstarterModule.tsx
+│   ├── Section.tsx
+│   ├── SectionHeader.tsx
+│   ├── SocialFollow.tsx
+│   ├── SubscribeForm.tsx
+│   └── SystemCard.tsx
+└── fonts/              # Global font assets
 public/                 # Static assets (images, fonts)
 ```
 
 ## AI Agent Behavior Rules
-- **Shell Commands**: Do NOT run any shell commands (npm, git, build, etc.) unless explicitly requested by the user.
+- **Shell Commands**: ABSOLUTELY NO shell command execution of ANY KIND (git, npm, system, build, etc.) is permitted unless explicitly requested by the user. Do not run `npm run build` or `npm run check` unless specifically asked.
 - **File Editing**: Always read the file first. Maintain the existing code style (4 spaces, single quotes).
+- **Static Export**: Always remember that this is a static site (no SSR/API). Use `<img>` tags for images.
