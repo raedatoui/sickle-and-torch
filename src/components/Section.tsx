@@ -8,7 +8,7 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({ children, className = '', id = '' }) => (
-    <section id={id} className={`w-full py-16 md:py-24 flex flex-col items-center justify-center relative overflow-hidden ${className}`}>
+    <section id={id} className={`w-full py-12 md:py-16 flex flex-col items-center justify-center relative overflow-hidden ${className}`}>
         <div className="w-full flex flex-col items-center z-10">{children}</div>
     </section>
 );

@@ -1,6 +1,7 @@
 'use client';
 
 import AdventureCard from '@/components/AdventureCard';
+import Divider from '@/components/Divider';
 import Headline from '@/components/Headline';
 import InfoCard from '@/components/InfoCard';
 import KickstarterModule from '@/components/KickstarterModule';
@@ -66,6 +67,8 @@ export default function Home() {
                 </div>
             </Section>
 
+            <Divider index={1} />
+
             <Section className="flex justify-center">
                 <div className="w-full max-w-7xl px-4 flex flex-col items-center text-center space-y-8">
                     {/* Intro Description */}
@@ -82,6 +85,8 @@ export default function Home() {
                     <KickstarterModule className="mt-12"/>
                 </div>
             </Section>
+
+            <Divider index={2} />
 
             {/* =========================================
                FEATURES SECTION
@@ -135,6 +140,8 @@ export default function Home() {
                 </div>
             </Section>
 
+            <Divider index={3} />
+
             {/* =========================================
                PICK YOUR SYSTEM SECTION
                ========================================= */}
@@ -173,6 +180,8 @@ export default function Home() {
                     </div>
                 </div>
             </Section>
+
+            <Divider index={4} />
 
             {/* =========================================
                ADVENTURES SECTION
@@ -314,10 +323,12 @@ export default function Home() {
                 </div>
             </Section>
 
+            <Divider index={5} />
+
             {/* =========================================
                FOOTER / CTA SECTION
                ========================================= */}
-            <Section className="!py-0">
+            <Section className="!pb-0">
                 <div className="w-full relative flex flex-col items-center">
                     <KickstarterModule className="mb-16"/>
                 </div>
