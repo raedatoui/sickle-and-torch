@@ -21,7 +21,6 @@
     --font-body: var(--font-cambria), serif;
 }
 
-
 html {
     font-size: 16px;
     scroll-behavior: smooth;
@@ -78,37 +77,6 @@ h6 {
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
 }
 
-/* Card Hover Effects */
-.fantasy-card {
-    transition: all 0.4s ease;
-    border: 1px solid #333;
-    position: relative;
-    overflow: hidden;
-}
-
-.fantasy-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 1px solid transparent;
-    transition: border-color 0.4s ease;
-    z-index: 10;
-    pointer-events: none;
-}
-
-.fantasy-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
-}
-
-.fantasy-card:hover::before {
-    border-color: var(--color-gold-primary);
-    box-shadow: inset 0 0 20px var(--color-gold-glow);
-}
-
 /* Button Styles */
 .btn-fantasy {
     background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
@@ -146,110 +114,9 @@ h6 {
     transform: scale(1);
 }
 
-/* Separator */
-.separator-gold {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-gold-dim), transparent);
-    width: 100%;
-    margin: 2rem 0;
-}
-
 a {
     color: inherit;
     text-decoration: none;
-}
-
-.gradient-overlay {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(216, 27, 27, 0.2) 50%, rgba(0, 0, 0, 1) 100%);
-}
-
-.torn-edge {
-    clip-path: polygon(
-        0% 0%,
-        100% 0%,
-        100% 95%,
-        98% 98%,
-        95% 96%,
-        92% 99%,
-        88% 96%,
-        85% 99%,
-        80% 95%,
-        75% 98%,
-        70% 95%,
-        65% 98%,
-        60% 95%,
-        55% 98%,
-        50% 95%,
-        45% 98%,
-        40% 95%,
-        35% 98%,
-        30% 95%,
-        25% 98%,
-        20% 95%,
-        15% 98%,
-        10% 95%,
-        5% 98%,
-        2% 96%,
-        0% 100%
-    );
-}
-
-.glow-text {
-    text-shadow: 0 0 20px rgba(216, 27, 27, 0.6);
-}
-
-.logo-invert {
-    filter: invert(100%);
-}
-
-/* Animation utils if needed, otherwise Tailwind animate-pulse etc can be used */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translate3d(0, -20px, 0);
-    }
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-.animate-fade-in-down {
-    animation: fadeInDown 1s ease-out;
-}
-
-/* Glass card for content over images */
-.glass-card {
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--color-gold-dim);
-    box-shadow:
-        0 0 60px rgba(0, 0, 0, 0.9),
-        0 0 20px var(--color-gold-glow),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-/* Enhanced text shadow for readability over images */
-.text-over-image {
-    text-shadow:
-        0 2px 4px rgba(0, 0, 0, 1),
-        0 4px 8px rgba(0, 0, 0, 0.8);
-}
-
-/* Subtle pulse animation for gold elements */
-@keyframes pulse-subtle {
-    0%,
-    100% {
-        filter: drop-shadow(0 0 10px var(--color-gold-glow));
-    }
-    50% {
-        filter: drop-shadow(0 0 25px var(--color-gold-glow));
-    }
-}
-
-.animate-pulse-subtle {
-    animation: pulse-subtle 3s ease-in-out infinite;
 }
 
 /* Fix for browser autofill background color */

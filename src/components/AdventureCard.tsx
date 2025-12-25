@@ -15,9 +15,9 @@ const AdventureCard: React.FC<AdventureCardProps> = ({ title, description, image
             {/* Image Container */}
             <div className="w-full md:w-2/5 px-4 md:px-0">
                 <div className="relative group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-[var(--color-gold-dim)] to-[var(--color-torch-red)] opacity-30 group-hover:opacity-60 blur transition duration-500" />
+                    <div className="absolute -inset-1 bg-gradient-to-r from-gold-dim to-torch-red opacity-30 group-hover:opacity-60 blur transition duration-500" />
                     <div
-                        className={`relative w-full overflow-hidden border border-[var(--color-gold-dim)] bg-black ${!imageSrc ? 'aspect-[3/4]' : ''}`}
+                        className={`relative w-full overflow-hidden border border-gold-dim bg-black ${!imageSrc ? 'aspect-[3/4]' : ''}`}
                     >
                         {imageSrc ? (
                             <img
@@ -44,7 +44,7 @@ const AdventureCard: React.FC<AdventureCardProps> = ({ title, description, image
                     dangerouslySetInnerHTML={{ __html: title }}
                 />
 
-                <div className="w-24 h-1 bg-[var(--color-torch-red)] mx-auto md:mx-0 shadow-[0_0_10px_var(--color-torch-red)]" />
+                <div className="w-24 h-1 bg-torch-red mx-auto md:mx-0 shadow-[0_0_10px_var(--color-torch-red)]" />
 
                 <div className="text-lg md:text-xl text-gray-200 font-secondary leading-relaxed space-y-4">{description}</div>
             </div>

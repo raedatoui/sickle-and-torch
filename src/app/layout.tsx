@@ -17,6 +17,9 @@ const oldNewspaper = localFont({
 export const metadata: Metadata = {
     title: 'Sickle & Torch - Zero Level Heroes',
     description: 'A rules expansion for 5e, Shadowdark, and DCC RPG.',
+    icons: {
+        icon: '/favicon.png',
+    },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

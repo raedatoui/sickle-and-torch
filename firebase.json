@@ -5,6 +5,11 @@
         "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
         "rewrites": [
             {
+                "source": "/subscribe",
+                "function": "on_request_example",
+                "region": "us-central1"
+            },
+            {
                 "source": "**",
                 "destination": "/index.html"
             }
