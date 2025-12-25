@@ -1,40 +1,62 @@
 'use client';
-import { useState } from 'react';
-
+import { httpsCallable } from 'firebase/functions';
+import { useState, useEffect } from 'react';
+import { functions } from '@/lib/firebase';
 
 const SubscribeForm: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
+    const [buttonLabel, setButtonLabel] = useState('Join The Mob');
+
+    // Reset button label when email changes
+    useEffect(() => {
+        if (email) {
+            setButtonLabel('Join The Mob');
+        }
+    }, [email]);
 
     const joinTheMob = async () => {
         if (!email) {
-            setMessage('Please enter an email address.');
             return;
         }
 
         setLoading(true);
-        setMessage('');
 
         try {
-            const response = await fetch('/subscribe', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
+            const subscribe = httpsCallable(functions, 'join_the_mob');
+            const result = await subscribe({ email });
+            const data = result.data as { result?: { message?: string; status?: number } };
 
-            const text = await response.text();
-
-            if (!response.ok) {
-                throw new Error(`Error ${response.status}: ${text}`);
+            // Check for status 200 (success)
+            if (data.result?.status === 200) {
+                setButtonLabel('JOINED!');
             }
-
-            setMessage(`Success! Mailgun says: ${text}`);
+            // Check for "Email already subscribed" message
+            else if (data.result?.message === 'Email already subscribed') {
+                setButtonLabel('Email already subscribed');
+            }
         } catch (error: unknown) {
             console.error('Failed to call function:', error);
-            if (error instanceof Error) setMessage(`Request failed: ${error.message}`);
+
+            if (error instanceof Error) {
+                const errorData = error as { code?: string; message?: string };
+
+                // Handle 400 errors (invalid argument)
+                if (errorData.code === 'invalid-argument' || errorData.message?.includes('Invalid email')) {
+                    setButtonLabel('Invalid email');
+                    setEmail('');
+                    setTimeout(() => {
+                        setButtonLabel('Join The Mob');
+                    }, 2000);
+                }
+                // Handle 500 errors
+                else if (errorData.code === 'internal' || errorData.message?.includes('500')) {
+                    setButtonLabel('Something went wrong');
+                    setTimeout(() => {
+                        setButtonLabel('Join The Mob');
+                    }, 3000);
+                }
+            }
         } finally {
             setLoading(false);
         }
@@ -59,7 +81,7 @@ const SubscribeForm: React.FC = () => {
                         type="submit"
                         className="btn-fantasy px-6 py-3 md:px-10 md:py-4 font-bold whitespace-nowrap text-3xl md:text-4xl rounded-sm cursor-pointer"
                     >
-                        {loading ? 'Joining...' : 'Join The Mob'}
+                        {loading ? 'Joining...' : buttonLabel}
                     </button>
                 </div>
             </div>
