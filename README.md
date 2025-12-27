@@ -44,3 +44,14 @@ The service receives requests from the frontend, sanitizes and validates the ema
 **Key Files:**
 *   `mailing/sickle-mailing/main.py`: Main function logic.
 *   `mailing/sickle-mailing/.env`: Local environment variables (API keys, etc.).
+
+---
+
+## Integration: Frontend to Backend
+
+The frontend communicates with the mailing list service via **Firebase Callable Functions**, which provides a secure, structured way to bridge the two:
+
+1.  **Authentication & Security:** The frontend uses **Firebase App Check** (with reCAPTCHA v3) to ensure only our authorized website can trigger the function.
+2.  **The Call:** Inside `SubscribeForm.tsx`, we use the `httpsCallable` SDK method to invoke the `join_the_mob` function by name.
+3.  **The Payload:** The frontend sends a JSON object containing the `email`, which the Python backend receives, validates, and processes via the Mailgun API.
+4.  **The Response:** The Python function returns a structured JSON response (status codes and messages) that the React component uses to update the UI state (e.g., showing "JOINED!" or "Invalid email").
