@@ -1,6 +1,6 @@
 'use client';
 import { httpsCallable } from 'firebase/functions';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { functions } from '@/lib/firebase';
 
 const SubscribeForm: React.FC = () => {
@@ -8,32 +8,28 @@ const SubscribeForm: React.FC = () => {
     const [email, setEmail] = useState('');
     const [buttonLabel, setButtonLabel] = useState('Join The Mob');
 
-    // Reset button label when email changes
-    useEffect(() => {
-        if (email) {
-            setButtonLabel('Join The Mob');
-        }
-    }, [email]);
-
     const joinTheMob = async () => {
         if (!email) {
             return;
         }
 
         setLoading(true);
-
         try {
             const subscribe = httpsCallable(functions, 'join_the_mob');
             const result = await subscribe({ email });
-            const data = result.data as { result?: { message?: string; status?: number } };
+            const data = result.data as any;
+            console.log('Join The Mob response:', data);
 
-            // Check for status 200 (success)
-            if (data.result?.status === 200) {
+            const status = data.result?.status || data.status;
+            const message = data.result?.message || data.message;
+
+            // Check for status 200 (success) - using loose equality to handle string/number
+            if (status == 200) {
                 setButtonLabel('JOINED!');
             }
             // Check for "Email already subscribed" message
-            else if (data.result?.message === 'Email already subscribed') {
-                setButtonLabel('Email already subscribed');
+            else if (message === 'Email already subscribed') {
+                setButtonLabel('Already joined');
             }
         } catch (error: unknown) {
             console.error('Failed to call function:', error);
@@ -72,14 +68,17 @@ const SubscribeForm: React.FC = () => {
                         id="email"
                         value={email}
                         placeholder="Enter your email"
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                            setButtonLabel('Join The Mob');
+                        }}
                         className="flex-1 bg-black/80 border border-gold-dim px-6 py-4 text-white focus:border-gold-primary focus:outline-none focus:ring-1 focus:ring-gold-primary font-secondary rounded-sm transition-all"
                     />
                     <button
                         onClick={() => joinTheMob()}
                         disabled={loading}
-                        type="submit"
-                        className="btn-fantasy px-6 py-3 md:px-10 md:py-4 font-bold whitespace-nowrap text-3xl md:text-4xl rounded-sm cursor-pointer"
+                        type="button"
+                        className="btn-mob px-6 py-3 md:px-10 md:py-4 font-bold whitespace-nowrap text-xl md:text-3xl rounded-sm cursor-pointer"
                     >
                         {loading ? 'Joining...' : buttonLabel}
                     </button>

@@ -1,0 +1,4 @@
+firebase_functions
+firebase-admin
+email-validator
+python-dotenv
