@@ -15,20 +15,29 @@ const SubscribeForm: FC = () => {
 
         setLoading(true);
         try {
-            const subscribe = httpsCallable(functions, 'join_the_mob');
+            // Define the expected response types from the backend
+            type JoinMobResponse =
+                | {
+                      status: number;
+                      response: {
+                          id: string;
+                          message: string;
+                      };
+                  }
+                | {
+                      message: string;
+                  };
+
+            const subscribe = httpsCallable<{ email: string }, JoinMobResponse>(functions, 'join_the_mob');
             const result = await subscribe({ email });
-            const data = result.data as any;
-            console.log('Join The Mob response:', data);
+            const data = result.data;
 
-            const status = data.result?.status || data.status;
-            const message = data.result?.message || data.message;
-
-            // Check for status 200 (success) - using loose equality to handle string/number
-            if (status === 200) {
+            // Check for status 200 (success)
+            if ('status' in data && data.status === 200) {
                 setButtonLabel('JOINED!');
             }
             // Check for "Email already subscribed" message
-            else if (message === 'Email already subscribed') {
+            else if ('message' in data && data.message === 'Email already subscribed') {
                 setButtonLabel('Already joined');
             }
         } catch (error: unknown) {

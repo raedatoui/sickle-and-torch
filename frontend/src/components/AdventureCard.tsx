@@ -1,17 +1,18 @@
 import type { FC, ReactNode } from 'react';
 
 interface AdventureCardProps {
-    title: string;
+    title1: string;
+    title2: string;
     description: ReactNode;
     imageSrc: string;
     reversed?: boolean;
     locked?: boolean;
 }
 
-const AdventureCard: FC<AdventureCardProps> = ({ title, description, imageSrc, reversed = false, locked = false }) => {
+const AdventureCard: FC<AdventureCardProps> = ({ title1, title2, description, imageSrc, reversed = false, locked = false }) => {
     return (
         <div
-            className={`flex flex-col ${reversed ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-16 w-full max-w-6xl mx-auto py-12`}
+            className={`flex flex-col ${reversed ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-16 w-full max-w-6xl mx-auto py-6 md:py-12`}
         >
             {/* Image Container */}
             <div className="w-full md:w-2/5 px-4 md:px-0">
@@ -32,7 +33,7 @@ const AdventureCard: FC<AdventureCardProps> = ({ title, description, imageSrc, r
 
                                 {/* Main Artwork */}
                                 <div className="absolute z-inset-0 flex items-center justify-center p-4 z-10">
-                                    <img src={imageSrc} alt={title} className="w-full h-full object-contain" />
+                                    <img src={imageSrc} alt={`${title1} ${title2}`} className="w-full h-full object-contain" />
                                 </div>
 
                                 {/* Sheen Effect - Always Present, Heavier, Static */}
@@ -47,7 +48,11 @@ const AdventureCard: FC<AdventureCardProps> = ({ title, description, imageSrc, r
                                 </div>
                             </div>
                         ) : (
-                            <img src={imageSrc} alt={title} className="w-full h-auto block transition-transform duration-400 group-hover:scale-105" />
+                            <img
+                                src={imageSrc}
+                                alt={`${title1} ${title2}`}
+                                className="w-full h-auto block transition-transform duration-400 group-hover:scale-105"
+                            />
                         )}
                     </div>
                 </div>
@@ -55,10 +60,11 @@ const AdventureCard: FC<AdventureCardProps> = ({ title, description, imageSrc, r
 
             {/* Content Container */}
             <div className="w-full md:w-3/5 space-y-6 px-4 md:px-0 text-center md:text-left">
-                <h3
-                    className="text-2xl md:text-5xl font-bold uppercase leading-none gold-gradient-text drop-shadow-md"
-                    dangerouslySetInnerHTML={{ __html: title }}
-                />
+                <h3 className="text-2xl md:text-5xl font-bold uppercase leading-none gold-gradient-text drop-shadow-md">
+                    {title1}
+                    <br />
+                    {title2}
+                </h3>
 
                 <div className="w-24 h-1 bg-torch-red mx-auto md:mx-0 shadow-[0_0_10px_var(--color-torch-red)]" />
 

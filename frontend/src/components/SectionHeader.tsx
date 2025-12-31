@@ -9,9 +9,9 @@ interface SectionHeaderProps {
 
 const SectionHeader: FC<SectionHeaderProps> = ({ title, subtitle, className = '' }) => {
     return (
-        <div className={`text-center mb-12 space-y-4 ${className}`}>
+        <div className={`text-center mb-6 md:mb-12 space-y-4 ${className}`}>
             <Headline>{title}</Headline>
-            {subtitle && <h3 className="text-xl md:text-3xl text-gray-200 font-secondary max-w-3xl mx-auto">{subtitle}</h3>}
+            {subtitle && <h3 className="text-2xl md:text-3xl text-gray-200 font-secondary max-w-3xl mx-auto">{subtitle}</h3>}
         </div>
     );
 };

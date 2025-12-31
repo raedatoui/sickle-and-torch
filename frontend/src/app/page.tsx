@@ -181,7 +181,7 @@ export default function Home() {
                ========================================= */}
             <Section id="adventures">
                 <div className="w-full max-w-7xl px-4 flex flex-col items-center">
-                    <div className="flex flex-col items-center w-full mb-16">
+                    <div className="flex flex-col items-center w-full">
                         <SectionHeader
                             title={
                                 <>
@@ -194,7 +194,7 @@ export default function Home() {
                             className="mb-0"
                         />
 
-                        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-10 font-bold uppercase tracking-wider text-xl md:text-2xl">
+                        <div className="flex flex-wrap justify-center gap-3 md:gap-4 font-bold uppercase tracking-wider text-2xl md:text-3xl">
                             <span className="px-4 py-2 bg-black/60 border border-gold-dim/50 text-gold-primary rounded shadow-sm whitespace-nowrap">
                                 40+ Encounters
                             </span>
@@ -212,7 +212,8 @@ export default function Home() {
 
                     {/* Adventure 1: Thrall Hold */}
                     <AdventureCard
-                        title="Thrall Hold of the<br /> Blood Bailiff"
+                        title1="Thrall Hold of the"
+                        title2="Blood Bailiff"
                         imageSrc="/adventures/blood-bailiff.webp"
                         description={
                             <>
@@ -231,7 +232,8 @@ export default function Home() {
 
                     {/* Adventure 2: Perilous Chapel */}
                     <AdventureCard
-                        title="Perilous Chapel of the<br />Omni Patriarch"
+                        title1="Perilous Chapel of the"
+                        title2="Omni Patriarch"
                         reversed={true}
                         locked={true}
                         imageSrc="/adventures/martyr.webp"
@@ -253,7 +255,8 @@ export default function Home() {
 
                     {/* Adventure 3: Panopticon */}
                     <AdventureCard
-                        title="Forbidden Citadel of the<br />Panopticon Overmind"
+                        title1="Forbidden Citadel of the"
+                        title2="Panopticon Overmind"
                         locked={true}
                         imageSrc="/adventures/heretic.webp"
                         description={
@@ -274,7 +277,8 @@ export default function Home() {
 
                     {/* Adventure 4: Alcazar */}
                     <AdventureCard
-                        title="Roving Alcazar of the<br />Golden Principal"
+                        title1="Roving Alcazar of the"
+                        title2="Golden Principal"
                         reversed={true}
                         locked={true}
                         imageSrc="/adventures/rebel.webp"
