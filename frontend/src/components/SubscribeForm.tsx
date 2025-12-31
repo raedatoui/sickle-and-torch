@@ -1,9 +1,9 @@
 'use client';
 import { httpsCallable } from 'firebase/functions';
-import { useState } from 'react';
+import { type FC, useState } from 'react';
 import { functions } from '@/lib/firebase';
 
-const SubscribeForm: React.FC = () => {
+const SubscribeForm: FC = () => {
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [buttonLabel, setButtonLabel] = useState('Join The Mob');
@@ -24,7 +24,7 @@ const SubscribeForm: React.FC = () => {
             const message = data.result?.message || data.message;
 
             // Check for status 200 (success) - using loose equality to handle string/number
-            if (status == 200) {
+            if (status === 200) {
                 setButtonLabel('JOINED!');
             }
             // Check for "Email already subscribed" message
@@ -61,7 +61,9 @@ const SubscribeForm: React.FC = () => {
     return (
         <div className="w-full flex flex-col items-center justify-center text-center space-y-8 px-4">
             <div className="w-full max-w-2xl flex flex-col items-center space-y-8">
-                <p className="text-lg text-gray-300 font-secondary">Sign up for updates and be the first to know when the campaign launches.</p>
+                <p className="text-2xl md:text-3xl text-gray-300 font-secondary">
+                    Sign up for updates and be the first to know when the campaign launches.
+                </p>
                 <div className="flex flex-col md:flex-row gap-3 w-full">
                     <input
                         type="email"

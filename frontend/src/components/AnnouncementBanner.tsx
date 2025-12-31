@@ -1,4 +1,4 @@
-import type React from 'react';
+import type { FC } from 'react';
 
 interface AnnouncementBannerProps {
     title: string;
@@ -7,7 +7,7 @@ interface AnnouncementBannerProps {
     className?: string;
 }
 
-const AnnouncementBanner: React.FC<AnnouncementBannerProps> = ({ title, subtitle, date, className = '' }) => {
+const AnnouncementBanner: FC<AnnouncementBannerProps> = ({ title, subtitle, date, className = '' }) => {
     return (
         <div className={`w-full max-w-4xl mx-auto my-8 p-1 ${className}`}>
             <div className="relative border border-gold-dim bg-black/80 backdrop-blur-sm p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_0_20px_rgba(201,162,39,0.1)]">
@@ -18,9 +18,7 @@ const AnnouncementBanner: React.FC<AnnouncementBannerProps> = ({ title, subtitle
                 <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gold-primary" />
 
                 <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-2">
-                    {subtitle && (
-                        <span className="text-gold-dim uppercase tracking-[0.2em] text-xs md:text-sm font-bold">{subtitle}</span>
-                    )}
+                    {subtitle && <span className="text-gold-dim uppercase tracking-[0.2em] text-xs md:text-sm font-bold">{subtitle}</span>}
                     <h2 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-wide font-secondary">{title}</h2>
                 </div>
 

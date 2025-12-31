@@ -1,7 +1,6 @@
 'use client';
 
-import type React from 'react';
-import { useEffect, useRef } from 'react';
+import { type FC, useEffect, useRef } from 'react';
 
 interface DividerProps {
     className?: string;
@@ -9,7 +8,7 @@ interface DividerProps {
     speed?: number;
 }
 
-const Divider: React.FC<DividerProps> = ({ className = '', index = 1, speed = 0.15 }) => {
+const Divider: FC<DividerProps> = ({ className = '', index = 1, speed = 0.15 }) => {
     const formattedIndex = index.toString().padStart(2, '0');
     const containerRef = useRef<HTMLDivElement>(null);
     const imgRef = useRef<HTMLImageElement>(null);
@@ -57,13 +56,35 @@ const Divider: React.FC<DividerProps> = ({ className = '', index = 1, speed = 0.
         };
     }, [speed]);
 
+    let art = `/dividers/art-${formattedIndex}.webp`;
+    let artWidth = 'max-w-6xl';
+
+    if (formattedIndex === '01') {
+        art = '/dividers/girl-fire.gif';
+        artWidth = 'max-w-3xl';
+    }
+    if (formattedIndex === '02') {
+        art = '/dividers/art-02.webp';
+        artWidth = 'max-w-3xl';
+    }
+    if (formattedIndex === '03') {
+        art = '/dividers/villagers-senkasti.webp';
+        artWidth = 'max-w-6xl';
+    }
+    if (formattedIndex === '04') {
+        art = '/dividers/art-03.webp';
+        artWidth = 'max-w-7xl';
+    }
+    if (formattedIndex === '05') {
+        artWidth = 'max-w-xl';
+    }
     return (
-        <div ref={containerRef} className={`w-full flex justify-center items-center py-4 ${className}`}>
+        <div ref={containerRef} className={`w-full flex justify-center items-center ${className}`}>
             <img
                 ref={imgRef}
-                src={`/dividers/art-${formattedIndex}.webp`}
+                src={art}
                 alt="Section Divider"
-                className="w-full max-w-[500px] md:max-w-[900px] max-h-[350px] md:max-h-[550px] h-auto object-contain opacity-90 select-none will-change-transform"
+                className={`w-full ${artWidth} h-auto object-contain opacity-90 select-none will-change-transform`}
             />
         </div>
     );

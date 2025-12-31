@@ -7,7 +7,7 @@
     },
     "files": {
         "ignoreUnknown": false,
-        "includes": ["**", "!**/out", "!**/node_modules", "!**/.next"],
+        "includes": ["**", "!**/out", "!**/node_modules", "!**/.next", "!**/emailTemplates"],
         "maxSize": 26214400
     },
     "formatter": {

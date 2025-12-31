@@ -1,4 +1,4 @@
-import type React from 'react';
+import type { FC } from 'react';
 
 interface SystemCardProps {
     title: string;
@@ -9,7 +9,7 @@ interface SystemCardProps {
     invertIcon?: boolean;
 }
 
-const SystemCard: React.FC<SystemCardProps> = ({ title, description, coverImage, systemIcon, systemName, invertIcon = false }) => {
+const SystemCard: FC<SystemCardProps> = ({ title, description, coverImage, systemIcon, systemName, invertIcon = false }) => {
     return (
         <div
             className="relative flex flex-col items-center text-center space-y-4 p-6

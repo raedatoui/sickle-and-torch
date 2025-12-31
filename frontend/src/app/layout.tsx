@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import localFont from 'next/font/local';
 import './globals.css';
 
@@ -25,7 +26,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" className={`${cambria.variable} ${oldNewspaper.variable}`}>
-            <body className="min-h-screen bg-[var(--color-void-bg)] text-[var(--color-text-main)] font-body">{children}</body>
+            <body className="min-h-screen bg-[var(--color-void-bg)] text-[var(--color-text-main)] font-body">
+                {children}
+                <Script id="google-analytics" src="https://www.googletagmanager.com/gtag/js?id=G-CNWD59EVHJ" strategy="afterInteractive" />
+                <Script strategy="afterInteractive">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-CNWD59EVHJ');
+                    `}
+                </Script>
+            </body>
         </html>
     );
 }

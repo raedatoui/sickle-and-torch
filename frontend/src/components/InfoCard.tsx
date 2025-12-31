@@ -1,5 +1,4 @@
-import type React from 'react';
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 import Headline from './Headline';
 
 interface InfoCardProps {
@@ -10,7 +9,7 @@ interface InfoCardProps {
     imageAlt?: string;
 }
 
-const InfoCard: React.FC<InfoCardProps> = ({ title, description, imageSrc, imageAlt = '', className = '' }) => {
+const InfoCard: FC<InfoCardProps> = ({ title, description, imageSrc, imageAlt = '', className = '' }) => {
     return (
         <div className="w-full max-w-6xl mt-12">
             <div

@@ -13,12 +13,12 @@ export default function Home() {
     return (
         <div className="min-h-screen flex flex-col w-full text-gray-200">
             {/* Global Fixed Background */}
-            <div className="fixed inset-0 z-[-1] bg-[url('/bg.webp')] bg-cover bg-center bg-no-repeat" />
+            <div className="fixed inset-0 z-[-1] bg-[url('/backgrounds/bg.webp')] bg-cover bg-center bg-no-repeat" />
             <div className="fixed inset-0 z-[-1] bg-black/45" />
             {/* =========================================
                HERO SECTION
                ========================================= */}
-            <Section className="min-h-[90vh] flex justify-center">
+            <Section className="flex justify-center">
                 <div className="w-full max-w-7xl px-4 flex flex-col items-center text-center space-y-8">
                     {/* Main Headlines */}
                     <div className="space-y-4">
@@ -30,7 +30,7 @@ export default function Home() {
                     {/* Logo */}
                     <div className="w-full max-w-lg md:max-w-2xl my-8 -mt-4 filter drop-shadow-[0_0_25px_rgba(201,162,39,0.15)]">
                         <img
-                            src="/sicke-n-torch.webp"
+                            src="/logos/sicke-n-torch.webp"
                             alt="Sickle & Torch Logo"
                             className="w-full h-auto invert opacity-95 hover:opacity-100 transition-opacity duration-500"
                         />
@@ -40,13 +40,13 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl text-xl md:text-2xl font-bold tracking-wide items-start justify-items-center drop-shadow-md text-gray-200 mt-8">
                         <div className="flex flex-col items-center gap-3 text-center">
                             <span>PLAY OUT YOUR</span>
-                            <img src="/system-5e.webp" alt="5E" className="h-20 w-auto" />
+                            <img src="/systems/system-5e.webp" alt="5E" className="h-20 w-auto" />
                             <span>CHARACTER’S BACKSTORY</span>
                         </div>
 
                         <div className="flex flex-col items-center gap-3 text-center">
                             <span>RUN AN UNFORGETTABLE</span>
-                            <img src="/system-shadowdark.webp" alt="Shadowdark" className="h-20 w-auto invert" />
+                            <img src="/systems/system-shadowdark.webp" alt="Shadowdark" className="h-20 w-auto invert" />
                             <span>GAUNTLET</span>
                         </div>
 
@@ -56,7 +56,7 @@ export default function Home() {
                                 <br />
                                 FUN WITH YOUR
                             </span>
-                            <img src="/system-dcc.webp" alt="DCC" className="h-20 w-auto" />
+                            <img src="/systems/system-dcc.webp" alt="DCC" className="h-20 w-auto" />
                             <span>FUNNEL!</span>
                         </div>
                     </div>
@@ -68,7 +68,7 @@ export default function Home() {
             <Section className="flex justify-center">
                 <div className="w-full max-w-7xl px-4 flex flex-col items-center text-center space-y-8">
                     {/* Intro Description */}
-                    <p className="max-w-4xl mt-8 text-center text-lg md:text-xl leading-relaxed font-secondary px-4">
+                    <p className="max-w-4xl mt-8 text-center text-2xl md:text-3xl leading-relaxed font-secondary px-4">
                         <span className="text-gold-primary font-bold">Sickle & Torch</span> is a rules expansion for{' '}
                         <span className="text-white font-bold">5e</span>, <span className="text-white font-bold">Shadowdark</span> and{' '}
                         <span className="text-white font-bold">Dungeon Crawl Classics</span> that focuses on 0-level commoners on their paths towards
@@ -145,18 +145,18 @@ export default function Home() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* 5E */}
                         <SystemCard
-                            coverImage="/sickle-5e.webp"
+                            coverImage="/systems/sickle-5e.webp"
                             systemName="5e"
-                            systemIcon="/system-5e.webp"
+                            systemIcon="/systems/system-5e.webp"
                             title="HEROIC ORIGINS"
                             description="Play out your 5e character’s heroic origin - your next backstory may be wilder than you could have ever imagined with these new background rules, ability score improvement options and variant mechanics for encounters that scale as your characters advance from commoners to low-level heroes!"
                         />
 
                         {/* Shadowdark */}
                         <SystemCard
-                            coverImage="/sickle-shadowdark.webp"
+                            coverImage="/systems/sickle-shadowdark.webp"
                             systemName="Shadowdark"
-                            systemIcon="/system-shadowdark.webp"
+                            systemIcon="/systems/system-shadowdark.webp"
                             invertIcon={true}
                             title="RUN THE GAUNTLET"
                             description="Run through your next Shadowdark gauntlet (or four) using expanded rules for 0-level character play and advancement, and do it alongside an in-game guide who will help you towards the class your character aspires to become - the new Torch mechanic!"
@@ -164,9 +164,9 @@ export default function Home() {
 
                         {/* DCC */}
                         <SystemCard
-                            coverImage="/sickle-dcc.webp"
+                            coverImage="/systems/sickle-dcc.webp"
                             systemName="DCC"
-                            systemIcon="/system-dcc.webp"
+                            systemIcon="/systems/system-dcc.webp"
                             title="ALL IN GOOD FUNNEL"
                             description="Explore new options for 0-level trade goods, birth augurs, rules for 0-level character improvement, Torch guiding spirits and more - and have funnel levels of fun even with character levels 1 to 3 with the new Difficulty Die mechanic for stochastically scaling encounters!"
                         />
@@ -213,7 +213,7 @@ export default function Home() {
                     {/* Adventure 1: Thrall Hold */}
                     <AdventureCard
                         title="Thrall Hold of the<br /> Blood Bailiff"
-                        imageSrc="/blood-bailiff.webp"
+                        imageSrc="/adventures/blood-bailiff.webp"
                         description={
                             <>
                                 <p>
@@ -233,6 +233,8 @@ export default function Home() {
                     <AdventureCard
                         title="Perilous Chapel of the<br />Omni Patriarch"
                         reversed={true}
+                        locked={true}
+                        imageSrc="/adventures/martyr.webp"
                         description={
                             <>
                                 <p>
@@ -252,6 +254,8 @@ export default function Home() {
                     {/* Adventure 3: Panopticon */}
                     <AdventureCard
                         title="Forbidden Citadel of the<br />Panopticon Overmind"
+                        locked={true}
+                        imageSrc="/adventures/heretic.webp"
                         description={
                             <>
                                 <p>
@@ -272,6 +276,8 @@ export default function Home() {
                     <AdventureCard
                         title="Roving Alcazar of the<br />Golden Principal"
                         reversed={true}
+                        locked={true}
+                        imageSrc="/adventures/rebel.webp"
                         description={
                             <>
                                 <p>
@@ -304,7 +310,11 @@ export default function Home() {
 
                 {/* Mob Image at the very bottom */}
                 <div className="w-full mt-auto">
-                    <img src="/crowd.webp" alt="The Mob" className="block w-full h-auto max-h-[40vh] object-cover object-top opacity-80" />
+                    <img
+                        src="/backgrounds/crowd.webp"
+                        alt="The Mob"
+                        className="block w-full h-auto max-h-[40vh] object-cover object-top opacity-80"
+                    />
                 </div>
             </Section>
         </div>

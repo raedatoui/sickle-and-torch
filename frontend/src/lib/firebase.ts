@@ -1,5 +1,5 @@
 import { getApps, initializeApp } from 'firebase/app';
-import { ReCaptchaV3Provider, initializeAppCheck } from 'firebase/app-check';
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 import { getFunctions } from 'firebase/functions';
 
 // 1. Define Config
@@ -25,7 +25,7 @@ const functions = getFunctions(app, 'us-central1');
 if (typeof window !== 'undefined') {
     // Use debug token for localhost development
     if (process.env.NODE_ENV === 'development') {
-        // @ts-ignore
+        // @ts-expect-error
         self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
     }
 
