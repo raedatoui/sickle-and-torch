@@ -20,7 +20,7 @@ const AdventureCard: FC<AdventureCardProps> = ({ title1, title2, description, im
                     <div className="absolute -inset-2 bg-linear-to-r from-gold-dim to-torch-red opacity-30 group-hover:opacity-60 blur transition duration-500" />
                     <div className={`relative w-full overflow-hidden border border-gold-dim bg-black ${!imageSrc ? 'aspect-[3/4]' : ''}`}>
                         {locked ? (
-                            <div className="relative w-full aspect-[2/3] flex flex-col items-center justify-between bg-torch-red overflow-hidden p-6 transition-transform duration-400 group-hover:scale-105">
+                            <div className="relative w-full aspect-[2/3] flex flex-col items-center justify-between bg-torch-red overflow-hidden transition-transform duration-400 group-hover:scale-105">
                                 {/* Background Image */}
                                 {/*<img*/}
                                 {/*    src="/adventures/red-bg.png"*/}
@@ -29,11 +29,11 @@ const AdventureCard: FC<AdventureCardProps> = ({ title1, title2, description, im
                                 {/*/>*/}
 
                                 {/* Logo at Top */}
-                                <img src="/logos/sicke-n-torch.webp" alt="Sickle & Torch" className="relative z-15 w-32 drop-shadow-md" />
+                                {/*<img src="/logos/sicke-n-torch.webp" alt="Sickle & Torch" className="relative z-15 w-32 drop-shadow-md" />*/}
 
                                 {/* Main Artwork */}
-                                <div className="absolute z-inset-0 flex items-center justify-center p-4 z-10">
-                                    <img src={imageSrc} alt={`${title1} ${title2}`} className="w-full h-full object-contain" />
+                                <div className="absolute inset-0 flex items-center justify-center z-10">
+                                    <img src={imageSrc} alt={`${title1} ${title2}`} className="w-full h-full     block" />
                                 </div>
 
                                 {/* Sheen Effect - Always Present, Heavier, Static */}

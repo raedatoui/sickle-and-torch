@@ -14,7 +14,7 @@ const SocialFollow: FC<SocialFollowProps> = ({ className = '', captionColor = 't
             <p className={`text-lg pb-4 uppercase tracking-widest ${captionColor}`}>{caption}</p>
             <div className="flex space-x-6 items-center scale-150">
                 <a
-                    href="https://www.kickstarter.com/projects/loreplaypress/1466325150"
+                    href="https://www.kickstarter.com/projects/loreplaypress/sickle-and-torch"
                     className="cursor-pointer transition-transform hover:scale-110"
                 >
                     <img src="/socials/kickstarter.png" alt="Kickstarter" className="h-8 w-auto" />

@@ -24,7 +24,7 @@ export default function Home() {
                     <div className="space-y-4">
                         <h2 className="text-xl md:text-3xl uppercase font-bold font-secondary text-gray-100">Everything for Playing</h2>
                         <Headline>ZERO LEVEL HEROES</Headline>
-                        <p className="text-xl md:text-3xl font-secondary uppercase font-bold text-gray-100">in one 40-page rules expansion</p>
+                        <p className="text-xl md:text-3xl font-secondary uppercase font-bold text-gray-100">in one rules expansion</p>
                     </div>
 
                     {/* Logo */}
@@ -46,7 +46,7 @@ export default function Home() {
 
                         <div className="flex flex-col items-center gap-3 text-center">
                             <span>RUN AN UNFORGETTABLE</span>
-                            <img src="/systems/system-shadowdark.webp" alt="Shadowdark" className="h-20 w-auto invert" />
+                            <img src="/systems/system-shadowdark.png" alt="Shadowdark" className="h-20 w-auto invert" />
                             <span>GAUNTLET</span>
                         </div>
 
@@ -154,9 +154,9 @@ export default function Home() {
 
                         {/* Shadowdark */}
                         <SystemCard
-                            coverImage="/systems/sickle-shadowdark.webp"
+                            coverImage="/systems/sickle-shadowdark.jpg"
                             systemName="Shadowdark"
-                            systemIcon="/systems/system-shadowdark.webp"
+                            systemIcon="/systems/system-shadowdark.png"
                             invertIcon={true}
                             title="RUN THE GAUNTLET"
                             description="Run through your next Shadowdark gauntlet (or four) using expanded rules for 0-level character play and advancement, and do it alongside an in-game guide who will help you towards the class your character aspires to become - the new Torch mechanic!"
@@ -164,7 +164,7 @@ export default function Home() {
 
                         {/* DCC */}
                         <SystemCard
-                            coverImage="/systems/sickle-dcc.webp"
+                            coverImage="/systems/sickle-dcc-2.webp"
                             systemName="DCC"
                             systemIcon="/systems/system-dcc.webp"
                             title="ALL IN GOOD FUNNEL"
@@ -235,8 +235,7 @@ export default function Home() {
                         title1="Perilous Chapel of the"
                         title2="Omni Patriarch"
                         reversed={true}
-                        locked={true}
-                        imageSrc="/adventures/martyr.webp"
+                        imageSrc="/adventures/perilous-chapel.jpg"
                         description={
                             <>
                                 <p>
@@ -257,8 +256,7 @@ export default function Home() {
                     <AdventureCard
                         title1="Forbidden Citadel of the"
                         title2="Panopticon Overmind"
-                        locked={true}
-                        imageSrc="/adventures/heretic.webp"
+                        imageSrc="/adventures/forbidden-citadel.png"
                         description={
                             <>
                                 <p>
@@ -280,8 +278,7 @@ export default function Home() {
                         title1="Roving Alcazar of the"
                         title2="Golden Principal"
                         reversed={true}
-                        locked={true}
-                        imageSrc="/adventures/rebel.webp"
+                        imageSrc="/adventures/rover-alcazar.jpg"
                         description={
                             <>
                                 <p>
@@ -311,6 +308,25 @@ export default function Home() {
                 <div className="w-full relative flex flex-col items-center">
                     <KickstarterModule className="mb-16" />
                 </div>
+
+                {/* Trademark Disclaimer */}
+                <p className="text-sm text-text-muted font-secondary text-center px-4 mt-4">
+                    Dungeon Crawl Classics and DCCRPG are trademarks of Goodman Games. <br />
+                    For additional information, visit{' '}
+                    <a
+                        href="https://www.goodman-games.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gold-dim transition-colors"
+                    >
+                        www.goodman-games.com
+                    </a>{' '}
+                    or contact{' '}
+                    <a href="mailto:info@goodman-games.com" className="hover:text-gold-dim transition-colors">
+                        info@goodman-games.com
+                    </a>
+                    .
+                </p>
 
                 {/* Mob Image at the very bottom */}
                 <div className="w-full mt-auto">
