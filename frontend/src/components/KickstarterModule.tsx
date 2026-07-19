@@ -12,7 +12,20 @@ const KickstarterModule: FC<KickstarterModuleProps> = ({ className = '', title =
     return (
         <div className={`w-full flex flex-col items-center space-y-10 ${className}`}>
             {/* Kickstarter Announcement - Single Line, No Box */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 text-center w-full">
+            <div className="flex flex-col items-center justify-center gap-4 md:gap-6 text-center w-full">
+                <div className="flex items-center gap-4 md:gap-6">
+                    <h2 className="text-xl md:text-4xl font-bold text-gold-primary uppercase tracking-wide font-secondary drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        Now available to purchase on
+                    </h2>
+                    <a
+                        href="https://www.drivethrurpg.com/en/publisher/33092/lore-play-press"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-all duration-300 hover:drop-shadow-[0_0_12px_rgba(201,162,39,0.8)]"
+                    >
+                        <img src="/logos/dtrpg-logo-small.png" alt="DriveThruRPG" className="h-6 md:h-8 w-auto" />
+                    </a>
+                </div>
                 <div className="flex items-center gap-4 md:gap-6">
                     <h2 className="text-xl md:text-4xl font-bold text-gold-primary uppercase tracking-wide font-secondary drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                         {title}
